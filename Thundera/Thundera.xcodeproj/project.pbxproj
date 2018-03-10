@@ -16,9 +16,11 @@
 		6CD407052053413C002724F7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6CD407032053413C002724F7 /* LaunchScreen.storyboard */; };
 		6CD407112053459F002724F7 /* Anton.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6CD407102053459F002724F7 /* Anton.ttf */; };
 		6CD40713205347EB002724F7 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CD40712205347EB002724F7 /* MainTabBarController.swift */; };
+		9C27CF325E9F29F608442997 /* Pods_Thundera.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78F7ED26BDD18B04747386A7 /* Pods_Thundera.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		007C2AEC134AE41850F28EB6 /* Pods-Thundera.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Thundera.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Thundera/Pods-Thundera.debug.xcconfig"; sourceTree = "<group>"; };
 		6C6FDD7420545C6D0099A5BF /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
 		6C6FDD7720545D8D0099A5BF /* Podcast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Podcast.swift; sourceTree = "<group>"; };
 		6CD406F72053413C002724F7 /* Thundera.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Thundera.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -30,6 +32,8 @@
 		6CD407062053413C002724F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6CD407102053459F002724F7 /* Anton.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Anton.ttf; sourceTree = "<group>"; };
 		6CD40712205347EB002724F7 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		78F7ED26BDD18B04747386A7 /* Pods_Thundera.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Thundera.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D30CAC92030A37401804473A /* Pods-Thundera.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Thundera.release.xcconfig"; path = "Pods/Target Support Files/Pods-Thundera/Pods-Thundera.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,12 +41,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C27CF325E9F29F608442997 /* Pods_Thundera.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2187D88DBECC1D429EDE6665 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				007C2AEC134AE41850F28EB6 /* Pods-Thundera.debug.xcconfig */,
+				D30CAC92030A37401804473A /* Pods-Thundera.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		6C6FDD7620545D730099A5BF /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -56,6 +70,8 @@
 			children = (
 				6CD406F92053413C002724F7 /* Thundera */,
 				6CD406F82053413C002724F7 /* Products */,
+				2187D88DBECC1D429EDE6665 /* Pods */,
+				A1346E2839CD8C86386A3475 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -116,6 +132,14 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
+		A1346E2839CD8C86386A3475 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				78F7ED26BDD18B04747386A7 /* Pods_Thundera.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -123,9 +147,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6CD407092053413C002724F7 /* Build configuration list for PBXNativeTarget "Thundera" */;
 			buildPhases = (
+				24FFF698C2292DF521163981 /* [CP] Check Pods Manifest.lock */,
 				6CD406F32053413C002724F7 /* Sources */,
 				6CD406F42053413C002724F7 /* Frameworks */,
 				6CD406F52053413C002724F7 /* Resources */,
+				FDEBFC775A574E7506B7BF8B /* [CP] Embed Pods Frameworks */,
+				BF9D0E92443D2A1567569704 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -183,6 +210,60 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		24FFF698C2292DF521163981 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Thundera-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BF9D0E92443D2A1567569704 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Thundera/Pods-Thundera-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FDEBFC775A574E7506B7BF8B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Thundera/Pods-Thundera-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Thundera/Pods-Thundera-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		6CD406F32053413C002724F7 /* Sources */ = {
@@ -328,6 +409,7 @@
 		};
 		6CD4070A2053413C002724F7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 007C2AEC134AE41850F28EB6 /* Pods-Thundera.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;
@@ -344,6 +426,7 @@
 		};
 		6CD4070B2053413C002724F7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D30CAC92030A37401804473A /* Pods-Thundera.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;

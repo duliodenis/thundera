@@ -1,0 +1,6 @@
+framework module Pods_Thundera {
+  umbrella header "Pods-Thundera-umbrella.h"
+
+  export *
+  module * { export * }
+}
