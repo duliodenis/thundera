@@ -18,16 +18,29 @@ class SearchController: UITableViewController {
     
     let cellID = "cellID"
     
+    let searchController = UISearchController(searchResultsController: nil)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupSearchBar()
+        setupTableView()
+    }
+    
+    // MARK: - Setup Methods
+    fileprivate func setupSearchBar() {
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.searchBar.delegate = self
+    }
+    
+    fileprivate func setupTableView() {
         // Register the cell class
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellID)
     }
     
-    
     // MARK: - TableView Delegate Methods
-    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return podcasts.count
     }
@@ -42,4 +55,13 @@ class SearchController: UITableViewController {
         
         return cell
     }
+}
+
+// MARK: - Search Bar Delegate Methods
+extension SearchController: UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print(searchText)
+    }
+    
 }
