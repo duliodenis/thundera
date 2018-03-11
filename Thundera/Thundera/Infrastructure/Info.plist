@@ -42,6 +42,9 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>Anton.ttf</string>
+		<string>Aileron-Light.otf</string>
+		<string>Aileron-Regular.otf</string>
+		<string>Aileron-SemiBold.otf</string>
 	</array>
 </dict>
 </plist>

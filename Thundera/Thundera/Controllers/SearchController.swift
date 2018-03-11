@@ -13,6 +13,7 @@ class SearchController: UITableViewController {
     var podcasts: [Podcast] = Array()
     
     let cellID = "cellID"
+    let cellHeight: CGFloat = 132 // 100 (ImageView) + 16 (top) + 16 (bottom)
     
     let searchController = UISearchController(searchResultsController: nil)
     
@@ -33,7 +34,11 @@ class SearchController: UITableViewController {
     
     fileprivate func setupTableView() {
         // Register the cell class
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellID)
+        // tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellID)
+        
+        let nib = UINib(nibName: "PodcastCell", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: cellID)
+        
     }
     
     // MARK: - TableView Delegate Methods
@@ -42,15 +47,13 @@ class SearchController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath)
-        let podcast = podcasts[indexPath.row]
-        
-        cell.imageView?.image = #imageLiteral(resourceName: "podcast-default-cover-art")
-        // Use the Nil-Coalescing Operator
-        cell.textLabel?.text = "\(podcast.trackName ?? "")\nby \(podcast.artistName ?? "")"
-        cell.textLabel?.numberOfLines = -1
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as! PodcastCell
+        cell.podcast = podcasts[indexPath.row]
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return cellHeight
     }
 }
 
