@@ -10,10 +10,11 @@ import UIKit
 
 class SearchController: UITableViewController {
     
-    var podcasts: [Podcast] = Array()
+    var podcasts = [Podcast]()
     
     let cellID = "cellID"
     let cellHeight: CGFloat = 132 // 100 (ImageView) + 16 (top) + 16 (bottom)
+    let headerHeight: CGFloat = 250
     
     let searchController = UISearchController(searchResultsController: nil)
     
@@ -33,12 +34,12 @@ class SearchController: UITableViewController {
     }
     
     fileprivate func setupTableView() {
-        // Register the cell class
-        // tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellID)
+        // remove horizontal lines from the tabvleView
+        tableView.tableFooterView = UIView()
         
+        // Register the cell nib
         let nib = UINib(nibName: "PodcastCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: cellID)
-        
     }
     
     // MARK: - TableView Delegate Methods
@@ -54,6 +55,20 @@ class SearchController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return cellHeight
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let nullLabel = UILabel()
+        nullLabel.text = "Please enter a search term to discover new podcasts."
+        nullLabel.numberOfLines = 2
+        nullLabel.textAlignment = .center
+        nullLabel.font = UIFont(name: "Aileron-SemiBold", size: 22)
+        nullLabel.textColor = UIColor.purpleThunder
+        return nullLabel
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return self.podcasts.count == 0 ? headerHeight : 0
     }
 }
 

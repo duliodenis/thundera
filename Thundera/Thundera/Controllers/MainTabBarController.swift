@@ -14,10 +14,8 @@ class MainTabBarController: UITabBarController {
         super.viewDidLoad()
         UINavigationBar.appearance().prefersLargeTitles = true
         
-        let thunderPurple = UIColor(red: 85.0/255, green: 37.0/255, blue: 131.0/255, alpha: 1.0)
-        
-        view.backgroundColor = thunderPurple
-        tabBar.tintColor = thunderPurple
+        view.backgroundColor = UIColor.purpleThunder
+        tabBar.tintColor = UIColor.purpleThunder
         
         setupViewControllers()
     }
