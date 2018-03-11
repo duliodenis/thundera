@@ -11,11 +11,7 @@ import Alamofire
 
 class SearchController: UITableViewController {
     
-    var podcasts = [
-        Podcast(trackName: "Syntax - Tasty Web Development Treats", artistName: "Wes Bos & Scott Tolinski"),
-        Podcast(trackName: "The /Filmcast", artistName: "David Chen, Devindra Hardawar, and Jeff Cannata"),
-        Podcast(trackName: "Podcast14", artistName: "Podcast14 Team")
-    ]
+    var podcasts: [Podcast] = Array()
     
     let cellID = "cellID"
     
@@ -63,31 +59,31 @@ class SearchController: UITableViewController {
 extension SearchController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        let url = "https://itunes.apple.com/search?term=\(searchText)"
-        Alamofire.request(url).responseData { (dataResponse) in
-            if let err = dataResponse.error {
-                print("Failed to contact server: \(err.localizedDescription)")
-                return
-            }
-            
-            guard let data = dataResponse.data else { return }
-             //use to look at JSON result
-             //let responseString = String(data: data, encoding: .utf8)
-             //print(responseString ?? "")
-            
-            do {
-                let searchResult = try JSONDecoder().decode(SearchResults.self, from: data)
-                print("Search Result: \(searchResult.resultCount)")
-                searchResult.results.forEach({ (podcast) in
-                    print("Name: \(podcast.trackName ?? "")")
-                })
-                
-                self.podcasts = searchResult.results
-                self.tableView.reloadData()
-                
-            } catch let decodeError {
-                print("Failed to decode: \(decodeError.localizedDescription)")
-            }
+        let url = "https://itunes.apple.com/search"
+        let parameters = ["term": searchText,
+                          "media": "podcast"]
+        
+        Alamofire.request(url,
+                          method: .get,
+                          parameters: parameters,
+                          encoding: URLEncoding.default,
+                          headers: nil).responseData { (dataResponse) in
+                            if let err = dataResponse.error {
+                                print("Failed to contact server: \(err.localizedDescription)")
+                                return
+                            }
+                            
+                            guard let data = dataResponse.data else { return }
+                            
+                            do {
+                                let searchResult = try JSONDecoder().decode(SearchResults.self, from: data)
+                                self.podcasts = searchResult.results
+                                self.tableView.reloadData()
+                                
+                            } catch let decodeError {
+                                print("Failed to decode: \(decodeError.localizedDescription)")
+                            }
+                            
         }
     }
     
