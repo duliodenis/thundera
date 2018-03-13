@@ -20,10 +20,6 @@ class EpisodesController: UITableViewController {
         }
     }
     
-    struct Episode {
-        let title: String?
-    }
-    
     fileprivate func fetchEpisodes() {
         guard let feedURL = podcast?.feedUrl else { return }
         
@@ -38,7 +34,7 @@ class EpisodesController: UITableViewController {
             case let .rss(feed):
                 var episodes = [Episode]()
                 feed.items?.forEach({ (feedItem) in
-                    episodes.append(Episode(title: feedItem.title ?? ""))
+                    episodes.append(Episode(feedItem: feedItem))
                 })
                 self.episodes = episodes
                 DispatchQueue.main.async {
