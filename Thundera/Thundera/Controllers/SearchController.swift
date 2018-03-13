@@ -36,7 +36,7 @@ class SearchController: UITableViewController {
     
     fileprivate func setupTableView() {
         // remove horizontal lines from the tabvleView
-        tableView.tableFooterView = UIView()
+        tableView.separatorStyle = .none
         
         // Register the cell nib
         let nib = UINib(nibName: "PodcastCell", bundle: nil)
