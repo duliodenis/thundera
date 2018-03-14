@@ -32,9 +32,17 @@ class EpisodesController: UITableViewController {
         parser?.parseAsync(result: { (result) in
             switch result {
             case let .rss(feed):
+                let podcastImageUrl = feed.iTunes?.iTunesImage?.attributes?.href
                 var episodes = [Episode]()
+                
                 feed.items?.forEach({ (feedItem) in
-                    episodes.append(Episode(feedItem: feedItem))
+                    var episode = Episode(feedItem: feedItem)
+                    
+                    // if the episode image is nil use the podcast image
+                    if episode.imageUrl == nil {
+                        episode.imageUrl = podcastImageUrl
+                    }
+                    episodes.append(episode)
                 })
                 self.episodes = episodes
                 DispatchQueue.main.async {
