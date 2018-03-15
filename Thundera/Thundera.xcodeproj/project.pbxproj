@@ -27,6 +27,7 @@
 		6CD407052053413C002724F7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6CD407032053413C002724F7 /* LaunchScreen.storyboard */; };
 		6CD407112053459F002724F7 /* Anton.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6CD407102053459F002724F7 /* Anton.ttf */; };
 		6CD40713205347EB002724F7 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CD40712205347EB002724F7 /* MainTabBarController.swift */; };
+		6CD40715205ABE9D002724F7 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CD40714205ABE9D002724F7 /* String.swift */; };
 		9C27CF325E9F29F608442997 /* Pods_Thundera.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78F7ED26BDD18B04747386A7 /* Pods_Thundera.framework */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +55,7 @@
 		6CD407062053413C002724F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6CD407102053459F002724F7 /* Anton.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Anton.ttf; sourceTree = "<group>"; };
 		6CD40712205347EB002724F7 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		6CD40714205ABE9D002724F7 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		78F7ED26BDD18B04747386A7 /* Pods_Thundera.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Thundera.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D30CAC92030A37401804473A /* Pods-Thundera.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Thundera.release.xcconfig"; path = "Pods/Target Support Files/Pods-Thundera/Pods-Thundera.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -83,6 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				6C53BA882055D12100013F82 /* UIColor.swift */,
+				6CD40714205ABE9D002724F7 /* String.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -334,6 +337,7 @@
 				6C48092F20587F5900E88667 /* EpisodeCell.swift in Sources */,
 				6C48092C20587D7700E88667 /* Episode.swift in Sources */,
 				6C6FDD7520545C6D0099A5BF /* SearchController.swift in Sources */,
+				6CD40715205ABE9D002724F7 /* String.swift in Sources */,
 				6C6FDD7B2054C1F70099A5BF /* APIService.swift in Sources */,
 				6C53BA892055D12100013F82 /* UIColor.swift in Sources */,
 				6C6FDD7820545D8D0099A5BF /* Podcast.swift in Sources */,

@@ -30,7 +30,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="532" height="204.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="podcast-default-cover-art" translatesAutoresizingMaskIntoConstraints="NO" id="sGV-4J-K4e">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="podcast-default-cover-art" translatesAutoresizingMaskIntoConstraints="NO" id="sGV-4J-K4e">
                         <rect key="frame" x="8" y="52.5" width="100" height="100"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="100" id="DaE-VP-cII"/>
