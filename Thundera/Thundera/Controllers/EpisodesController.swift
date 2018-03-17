@@ -21,12 +21,8 @@ class EpisodesController: UITableViewController {
     }
     
     fileprivate func fetchEpisodes() {
-        guard let feedURL = podcast?.feedUrl else { return }
-        
-        // to prevent ATP Errors - if http - switch to https
-        let secureFeedURL = feedURL.contains("https") ? feedURL : feedURL.replacingOccurrences(of: "http", with: "https")
-        
-        guard let url = URL(string: secureFeedURL) else { return }
+        guard let feedURL = podcast?.feedUrl else { return }        
+        guard let url = URL(string: feedURL.toSecureHTTPS()) else { return }
         let parser = FeedParser(URL: url)
         
         parser?.parseAsync(result: { (result) in

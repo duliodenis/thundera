@@ -10,6 +10,7 @@ import Foundation
 
 extension String {
     func toSecureHTTPS() -> String {
+        // to prevent ATP Errors - if http - switch to https
         return self.contains("https") ? self : self.replacingOccurrences(of: "http", with: "https")
     }
 }
