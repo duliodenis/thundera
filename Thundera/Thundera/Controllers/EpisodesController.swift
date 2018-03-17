@@ -49,6 +49,15 @@ class EpisodesController: UITableViewController {
     fileprivate let cellID = "cellID"
     fileprivate let cellHeight: CGFloat = 132 // 100 (ImageView) + 16 (top) + 16 (bottom)
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let episode = episodes[indexPath.row]
+        let window = UIApplication.shared.keyWindow
+        let playerView = Bundle.main.loadNibNamed("PlayerView", owner: self, options: nil)?.first as! PlayerView
+        playerView.episode = episode
+        playerView.frame = self.view.frame
+        window?.addSubview(playerView)
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return episodes.count
     }
