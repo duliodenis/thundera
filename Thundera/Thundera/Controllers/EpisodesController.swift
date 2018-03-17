@@ -26,28 +26,15 @@ class EpisodesController: UITableViewController {
         let parser = FeedParser(URL: url)
         
         parser?.parseAsync(result: { (result) in
-            switch result {
-            case let .rss(feed):
-                let podcastImageUrl = feed.iTunes?.iTunesImage?.attributes?.href
-                var episodes = [Episode]()
-                
-                feed.items?.forEach({ (feedItem) in
-                    var episode = Episode(feedItem: feedItem)
-                    
-                    // if the episode image is nil use the podcast image
-                    if episode.imageUrl == nil {
-                        episode.imageUrl = podcastImageUrl
-                    }
-                    episodes.append(episode)
-                })
-                self.episodes = episodes
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
-                break
-                
-            default:
-                print("something else")
+            if let err = result.error {
+                print("Failed to Parse XML feed: \(err.localizedDescription)")
+                return
+            }
+            
+            guard let feed = result.rssFeed else { return }
+            self.episodes = feed.toEpisodes()
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
             }
         })
     }
