@@ -21,22 +21,13 @@ class EpisodesController: UITableViewController {
     }
     
     fileprivate func fetchEpisodes() {
-        guard let feedURL = podcast?.feedUrl else { return }        
-        guard let url = URL(string: feedURL.toSecureHTTPS()) else { return }
-        let parser = FeedParser(URL: url)
-        
-        parser?.parseAsync(result: { (result) in
-            if let err = result.error {
-                print("Failed to Parse XML feed: \(err.localizedDescription)")
-                return
-            }
-            
-            guard let feed = result.rssFeed else { return }
-            self.episodes = feed.toEpisodes()
+        guard let feedURL = podcast?.feedUrl else { return }
+        APIService.shared.fetchEpisodes(feedURL: feedURL) { (episodes) in
+            self.episodes = episodes
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
-        })
+        }
     }
     
     override func viewDidLoad() {
