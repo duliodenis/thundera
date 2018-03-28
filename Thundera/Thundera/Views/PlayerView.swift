@@ -11,7 +11,14 @@ import AVKit
 
 class PlayerView: UIView {
     
-    @IBOutlet weak var episodeImageView: UIImageView!
+    @IBOutlet weak var episodeImageView: UIImageView! {
+        didSet {
+            episodeImageView.layer.cornerRadius = 10
+            episodeImageView.clipsToBounds = true
+            let scale:CGFloat = 0.7
+            episodeImageView.transform = CGAffineTransform(scaleX: scale, y: scale)
+        }
+    }
     
     @IBOutlet weak var episodeTitleLabel: UILabel! {
         didSet {
