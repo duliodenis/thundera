@@ -48,6 +48,17 @@ class PlayerView: UIView {
         }
     }
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        let time = CMTimeMake(1, 3)
+        let times = [NSValue(time: time)]
+        player.addBoundaryTimeObserver(forTimes: times,
+                                       queue: .main) {
+                                        self.enlargeEpisodeImageView()
+        }
+    }
+    
     
     // MARK: - Player Action Methods
     
@@ -68,6 +79,17 @@ class PlayerView: UIView {
             player.pause()
             playPauseButton.setImage(#imageLiteral(resourceName: "play"), for: .normal)
         }
+    }
+    
+    fileprivate func enlargeEpisodeImageView() {
+        UIView.animate(withDuration: 0.75,
+                       delay: 0,
+                       usingSpringWithDamping: 0.5,
+                       initialSpringVelocity: 1,
+                       options: .curveEaseOut,
+                       animations: {
+                        self.episodeImageView.transform = .identity
+        })
     }
     
     @IBAction func dismissPlayer(_ sender: Any) {
