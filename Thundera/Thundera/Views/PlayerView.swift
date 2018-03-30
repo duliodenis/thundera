@@ -11,7 +11,7 @@ import AVKit
 
 class PlayerView: UIView {
     
-    let shrunkenTransform = CGAffineTransform(scaleX: 0.7, y: 0.7)
+    //MARK: - IB Outlets
     
     @IBOutlet weak var episodeImageView: UIImageView! {
         didSet {
@@ -20,6 +20,10 @@ class PlayerView: UIView {
             episodeImageView.transform = shrunkenTransform
         }
     }
+
+    @IBOutlet weak var currentTimeSlider: UISlider!
+    @IBOutlet weak var currentTimeLabel: UILabel!
+    @IBOutlet weak var durationLabel: UILabel!
     
     @IBOutlet weak var episodeTitleLabel: UILabel! {
         didSet {
@@ -30,6 +34,11 @@ class PlayerView: UIView {
     @IBOutlet weak var authorLabel: UILabel!
     
     @IBOutlet weak var playPauseButton: UIButton!
+    
+    
+    // MARK: - Instance Variables and Lifecycle
+    
+    let shrunkenTransform = CGAffineTransform(scaleX: 0.7, y: 0.7)
     
     let player: AVPlayer = {
         let avPlayer = AVPlayer()
@@ -49,8 +58,23 @@ class PlayerView: UIView {
         }
     }
     
+    fileprivate func observePlayerCurrentTime() {
+        let interval = CMTime(value: 1, timescale: 2)
+        
+        player.addPeriodicTimeObserver(forInterval: interval, queue: .main) { (time) in
+            let totalSeconds = Int(CMTimeGetSeconds(time))
+            let seconds = totalSeconds % 60
+            let minutes = totalSeconds / 60
+            
+            let timeFormat = String(format: "%02d:%02d", minutes, seconds)
+            self.currentTimeLabel.text = timeFormat
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        observePlayerCurrentTime()
         
         let time = CMTimeMake(1, 3)
         let times = [NSValue(time: time)]
@@ -64,7 +88,6 @@ class PlayerView: UIView {
     // MARK: - Player Action Methods
     
     fileprivate func playEpisode() {
-        print("Tring to print url at \(episode.streamUrl)")
         guard let url = URL(string: episode.streamUrl) else { return }
         let playerItem = AVPlayerItem(url: url)
         player.replaceCurrentItem(with: playerItem)

@@ -59,13 +59,13 @@
                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sLn-sA-gDe">
                             <rect key="frame" x="0.0" y="430" width="327" height="22"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fAN-aD-pLQ">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fAN-aD-pLQ">
                                     <rect key="frame" x="0.0" y="0.0" width="36.666666666666664" height="22"/>
                                     <fontDescription key="fontDescription" name="Aileron-Light" family="Aileron" pointSize="15"/>
                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="00:00:00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="diC-Xy-nNP">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="--:--" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="diC-Xy-nNP">
                                     <rect key="frame" x="36.666666666666657" y="0.0" width="290.33333333333337" height="22"/>
                                     <fontDescription key="fontDescription" name="Aileron-Light" family="Aileron" pointSize="15"/>
                                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -178,6 +178,9 @@
             <viewLayoutGuide key="safeArea" id="Jvx-Rz-d9h"/>
             <connections>
                 <outlet property="authorLabel" destination="Zp4-uf-U2W" id="hGI-8e-wXo"/>
+                <outlet property="currentTimeLabel" destination="fAN-aD-pLQ" id="x54-Yg-Ivs"/>
+                <outlet property="currentTimeSlider" destination="tU0-Vw-SmH" id="J68-jI-JjY"/>
+                <outlet property="durationLabel" destination="diC-Xy-nNP" id="t04-WD-s1D"/>
                 <outlet property="episodeImageView" destination="Xlv-lx-KbM" id="3QN-Bf-zqx"/>
                 <outlet property="episodeTitleLabel" destination="Cop-Ea-9hh" id="cq0-ka-PRK"/>
                 <outlet property="playPauseButton" destination="1Lr-jd-p6f" id="4kh-Q8-GZG"/>
