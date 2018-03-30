@@ -11,12 +11,13 @@ import AVKit
 
 class PlayerView: UIView {
     
+    let shrunkenTransform = CGAffineTransform(scaleX: 0.7, y: 0.7)
+    
     @IBOutlet weak var episodeImageView: UIImageView! {
         didSet {
             episodeImageView.layer.cornerRadius = 10
             episodeImageView.clipsToBounds = true
-            let scale:CGFloat = 0.7
-            episodeImageView.transform = CGAffineTransform(scaleX: scale, y: scale)
+            episodeImageView.transform = shrunkenTransform
         }
     }
     
@@ -75,9 +76,11 @@ class PlayerView: UIView {
         if player.timeControlStatus == .paused {
             player.play()
             playPauseButton.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
+            enlargeEpisodeImageView()
         } else {
             player.pause()
             playPauseButton.setImage(#imageLiteral(resourceName: "play"), for: .normal)
+            shrinkEpisodeImageView()
         }
     }
     
@@ -90,6 +93,18 @@ class PlayerView: UIView {
                        animations: {
                         self.episodeImageView.transform = .identity
         })
+    }
+    
+    fileprivate func shrinkEpisodeImageView() {
+        UIView.animate(withDuration: 0.75,
+                       delay: 0,
+                       usingSpringWithDamping: 0.5,
+                       initialSpringVelocity: 1,
+                       options: .curveEaseOut,
+                       animations: {
+                        self.episodeImageView.transform = self.shrunkenTransform
+        })
+        
     }
     
     @IBAction func dismissPlayer(_ sender: Any) {
