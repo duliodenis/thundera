@@ -66,7 +66,17 @@ class PlayerView: UIView {
             
             let durationTime = self.player.currentItem?.duration
             self.durationLabel.text = durationTime?.toDisplayString()
+            
+            self.updateCurrentTimeSlider()
         }
+    }
+    
+    fileprivate func updateCurrentTimeSlider() {
+        let currentTimeSeconds = CMTimeGetSeconds(player.currentTime())
+        let currentDurationSeconds = CMTimeGetSeconds(player.currentItem?.duration ?? CMTimeMake(1, 1))
+        let percentage = currentTimeSeconds / currentDurationSeconds
+        
+        self.currentTimeSlider.value = Float(percentage)
     }
     
     override func awakeFromNib() {

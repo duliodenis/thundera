@@ -50,7 +50,7 @@
                                 <constraint firstAttribute="width" secondItem="Xlv-lx-KbM" secondAttribute="height" multiplier="1:1" id="ASj-it-8g7"/>
                             </constraints>
                         </imageView>
-                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="tU0-Vw-SmH">
+                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="tU0-Vw-SmH">
                             <rect key="frame" x="-2" y="381" width="331" height="45"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="44" id="TeL-fy-lLx"/>
