@@ -13,9 +13,18 @@ extension CMTime {
     func toDisplayString() -> String {
         let totalSeconds = Int(CMTimeGetSeconds(self))
         let seconds = totalSeconds % 60
-        let minutes = totalSeconds / 60
+        let minutes = totalSeconds % (60 * 60) / 60
+        let hours = totalSeconds / 60 / 60
+        var timeFormatString = String()
         
-        let timeFormatString = String(format: "%02d:%02d", minutes, seconds)
+        if hours == 0 {
+            timeFormatString = String(format: "%02d:%02d", minutes, seconds)
+        } else if hours > 0 && hours < 9 {
+            timeFormatString = String(format: "%d:%02d:%02d", hours, minutes, seconds)
+        } else {
+            timeFormatString = String(format: "%02d:%02d:%02d", hours, minutes, seconds)
+        }
+        
         return timeFormatString
     }
     
