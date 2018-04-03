@@ -135,6 +135,27 @@ class PlayerView: UIView {
                        animations: {
                         self.episodeImageView.transform = self.shrunkenTransform
         })
+    }
+    
+    @IBAction func currentTimeSliderChange(_ sender: Any) {
+        let percentage = currentTimeSlider.value
+        guard let duration = player.currentItem?.duration else { return }
+        let durationInSeconds = CMTimeGetSeconds(duration)
+        let seekTimeInSeconds = Float64(percentage) * durationInSeconds
+        let seekTime = CMTimeMakeWithSeconds(seekTimeInSeconds, Int32(NSEC_PER_SEC))
+        
+        player.seek(to: seekTime)
+    }
+    
+    @IBAction func rewind(_ sender: Any) {
+        
+    }
+    
+    @IBAction func fastforward(_ sender: Any) {
+        
+    }
+    
+    @IBAction func volumeChange(_ sender: Any) {
         
     }
     
