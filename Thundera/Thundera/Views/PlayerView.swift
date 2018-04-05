@@ -148,14 +148,15 @@ class PlayerView: UIView {
     }
     
     @IBAction func rewind(_ sender: Any) {
-        let fifteenSeconds = CMTimeMakeWithSeconds(15, Int32(NSEC_PER_SEC))
-        let seekTime = CMTimeSubtract(player.currentTime(), fifteenSeconds)
-        
-        player.seek(to: seekTime)
+        seekToCurrentTime(delta: -15)
     }
     
     @IBAction func fastforward(_ sender: Any) {
-        let fifteenSeconds = CMTimeMakeWithSeconds(15, Int32(NSEC_PER_SEC))
+        seekToCurrentTime(delta: 15)
+    }
+    
+    fileprivate func seekToCurrentTime(delta: Int64) {
+        let fifteenSeconds = CMTimeMake(delta, Int32(NSEC_PER_SEC))
         let seekTime = CMTimeAdd(player.currentTime(), fifteenSeconds)
         
         player.seek(to: seekTime)
