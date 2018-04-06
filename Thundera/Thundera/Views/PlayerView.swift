@@ -162,8 +162,8 @@ class PlayerView: UIView {
         player.seek(to: seekTime)
     }
     
-    @IBAction func volumeChange(_ sender: Any) {
-        
+    @IBAction func volumeChange(_ sender: UISlider) {
+        player.volume = sender.value
     }
     
     @IBAction func dismissPlayer(_ sender: Any) {
