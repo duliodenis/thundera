@@ -61,13 +61,14 @@ class PlayerView: UIView {
     fileprivate func observePlayerCurrentTime() {
         let interval = CMTime(value: 1, timescale: 2)
         
-        player.addPeriodicTimeObserver(forInterval: interval, queue: .main) { (time) in
-            self.currentTimeLabel.text = time.toDisplayString()
+        // break player's strong reference to self - break the retain cycle
+        player.addPeriodicTimeObserver(forInterval: interval, queue: .main) { [weak self] (time) in
+            self?.currentTimeLabel.text = time.toDisplayString()
             
-            let durationTime = self.player.currentItem?.duration
-            self.durationLabel.text = durationTime?.toDisplayString()
+            let durationTime = self?.player.currentItem?.duration
+            self?.durationLabel.text = durationTime?.toDisplayString()
             
-            self.updateCurrentTimeSlider()
+            self?.updateCurrentTimeSlider()
         }
     }
     
@@ -86,9 +87,11 @@ class PlayerView: UIView {
         
         let time = CMTimeMake(1, 3)
         let times = [NSValue(time: time)]
+        
+        // break player's strong reference to self - break the retain cycle
         player.addBoundaryTimeObserver(forTimes: times,
-                                       queue: .main) {
-                                        self.enlargeEpisodeImageView()
+                                       queue: .main) { [weak self] in
+                                        self?.enlargeEpisodeImageView()
         }
     }
     
