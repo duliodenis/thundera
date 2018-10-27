@@ -95,6 +95,10 @@ class PlayerView: UIView {
         }
     }
     
+    static func initFromNib() -> PlayerView {
+        return Bundle.main.loadNibNamed("PlayerView", owner: self, options: nil)?.first as! PlayerView
+    }
+    
     
     // MARK: - Player Action Methods
     
