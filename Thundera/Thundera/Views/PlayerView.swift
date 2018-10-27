@@ -74,7 +74,7 @@ class PlayerView: UIView {
     
     fileprivate func updateCurrentTimeSlider() {
         let currentTimeSeconds = CMTimeGetSeconds(player.currentTime())
-        let currentDurationSeconds = CMTimeGetSeconds(player.currentItem?.duration ?? CMTimeMake(1, 1))
+        let currentDurationSeconds = CMTimeGetSeconds(player.currentItem?.duration ?? CMTimeMake(value: 1, timescale: 1))
         let percentage = currentTimeSeconds / currentDurationSeconds
         
         self.currentTimeSlider.value = Float(percentage)
@@ -85,7 +85,7 @@ class PlayerView: UIView {
         
         observePlayerCurrentTime()
         
-        let time = CMTimeMake(1, 3)
+        let time = CMTimeMake(value: 1, timescale: 3)
         let times = [NSValue(time: time)]
         
         // break player's strong reference to self - break the retain cycle
@@ -145,7 +145,7 @@ class PlayerView: UIView {
         guard let duration = player.currentItem?.duration else { return }
         let durationInSeconds = CMTimeGetSeconds(duration)
         let seekTimeInSeconds = Float64(percentage) * durationInSeconds
-        let seekTime = CMTimeMakeWithSeconds(seekTimeInSeconds, Int32(NSEC_PER_SEC))
+        let seekTime = CMTimeMakeWithSeconds(seekTimeInSeconds, preferredTimescale: Int32(NSEC_PER_SEC))
         
         player.seek(to: seekTime)
     }
@@ -159,7 +159,7 @@ class PlayerView: UIView {
     }
     
     fileprivate func seekToCurrentTime(delta: Int64) {
-        let fifteenSeconds = CMTimeMake(delta, Int32(NSEC_PER_SEC))
+        let fifteenSeconds = CMTimeMake(value: delta, timescale: Int32(NSEC_PER_SEC))
         let seekTime = CMTimeAdd(player.currentTime(), fifteenSeconds)
         
         player.seek(to: seekTime)
